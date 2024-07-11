@@ -1,4 +1,3 @@
-// src/services/blogs.js
 import axios from 'axios';
 import storage from './storage';
 

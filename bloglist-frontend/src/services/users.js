@@ -1,4 +1,3 @@
-// src/services/users.js
 import axios from 'axios';
 import storage from './storage';
 

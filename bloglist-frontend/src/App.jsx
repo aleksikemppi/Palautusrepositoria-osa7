@@ -1,9 +1,7 @@
-// src/App.jsx
 import React, { useState, useEffect } from 'react';
-import {
-  BrowserRouter as Router,
-  Routes, Route, Link
-} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import styled from 'styled-components';
+import GlobalStyle from './styles/GlobalStyle';
 import blogService from './services/blogs';
 import loginService from './services/login';
 import storage from './services/storage';
@@ -14,7 +12,16 @@ import UserList from './components/UserList';
 import User from './components/User';
 import BlogList from './components/BlogList';
 import Blog from './components/Blog';
-import NavBar from './components/NavBar';
+import NavBar from './components/NavBar'; 
+
+const Container = styled.div`
+  padding: 20px;
+`;
+
+const Header = styled.h1`
+  text-align: center;
+  margin-bottom: 20px;
+`;
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -60,9 +67,10 @@ const App = () => {
 
   return (
     <Router>
-      <div>
+      <Container>
+        <GlobalStyle />
         <NavBar /> {/* Add NavBar */}
-        <h1>blog app</h1>
+        <Header>blog app</Header>
         <Notification notification={notification} />
         {user === null ? (
           <Login onLogin={login} />
@@ -78,7 +86,7 @@ const App = () => {
           <Route path="/users/:id" element={<User />} />
           <Route path="/blogs/:id" element={<Blog />} />
         </Routes>
-      </div>
+      </Container>
     </Router>
   );
 };

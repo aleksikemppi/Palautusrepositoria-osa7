@@ -1,4 +1,3 @@
-// src/components/NewBlog.jsx
 import React, { useState } from 'react';
 
 const NewBlog = ({ createBlog }) => {

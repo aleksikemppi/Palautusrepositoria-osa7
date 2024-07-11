@@ -1,4 +1,3 @@
-// src/components/Blog.jsx
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import blogService from '../services/blogs';
@@ -63,6 +62,7 @@ const Blog = () => {
           type="text"
           value={newComment}
           onChange={({ target }) => setNewComment(target.value)}
+          placeholder="Add a comment"
         />
         <button type="submit">add comment</button>
       </form>
