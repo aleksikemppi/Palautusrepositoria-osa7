@@ -1,37 +1,41 @@
-import { useState } from 'react'
+// src/components/Login.jsx
+import React, { useState } from 'react';
 
-const Login = ({ doLogin }) => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+const Login = ({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleLogin = (event) => {
-    event.preventDefault()
-    doLogin({ username, password })
-    setUsername('')
-    setPassword('')
-  }
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    await onLogin(username, password);
+  };
 
   return (
-    <form onSubmit={handleLogin}>
-      <label>
-        Username:
-        <input
-          type="text"
-          data-testid='username'
-          value={username}
-          onChange={(e) => setUsername(e.target.value)} />
-      </label>
-      <label>
-        Password:
-        <input
-          type="password"
-          value={password}
-          data-testid='password'
-          onChange={(e) => setPassword(e.target.value)} />
-      </label>
-      <input type="submit" value="Login" />
-    </form>
-  )
-}
+    <div>
+      <h2>Login</h2>
+      <form onSubmit={handleLogin}>
+        <div>
+          username
+          <input
+            type="text"
+            value={username}
+            name="Username"
+            onChange={({ target }) => setUsername(target.value)}
+          />
+        </div>
+        <div>
+          password
+          <input
+            type="password"
+            value={password}
+            name="Password"
+            onChange={({ target }) => setPassword(target.value)}
+          />
+        </div>
+        <button type="submit">login</button>
+      </form>
+    </div>
+  );
+};
 
-export default Login
+export default Login;
